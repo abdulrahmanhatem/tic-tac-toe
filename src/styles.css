@@ -56,29 +56,27 @@ body {
   padding: 0;
   background: #222;
 }
+.list{
+  width: 150px;
+}
 
 .square {
   background: transparent;
   border: 1px solid #eee;
   color: #bbb;
-  float: left;
   font-size: 24px;
   font-weight: bold;
   line-height: 34px;
   height: 50px;
   margin-right: -1px;
-  margin-top: -1px;
+  margin-top: -4px;
   padding: 0;
   text-align: center;
   width: 50px;
   cursor: pointer;
 }
 
-.board-row:after {
-  clear: both;
-  content: '';
-  display: table;
-}
+
 
 .status {
   margin-bottom: 10px;
@@ -103,6 +101,7 @@ body {
   padding: .5rem;
   transition: all ease-in-out .3s;
   cursor: pointer;
+
 }
 .game-info button:hover, 
 .game-info button:active
