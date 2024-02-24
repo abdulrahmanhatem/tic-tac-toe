@@ -64,8 +64,8 @@ export default function Game() {
 
   const moves = history.map((squares, move) => {
     let description;
-    if (move > 0) {
-      description = 'Go to move #' + move;
+    if (move > 0) {  
+      description = move === currentMove ? 'Your are to Move #' + move :  'Go to move #' + move;
     } else {
       description = 'Go to game start';
     }
@@ -87,8 +87,6 @@ export default function Game() {
     </div>
   )
 }
-
-
 
 function calculateWinner(squares){
   const lines =[
