@@ -21,6 +21,9 @@ body {
   text-align: center;
   cursor: pointer;
 }
+.square.win{
+  background: #003100;
+}
 .status {
   margin-bottom: 10px;
   color: #bbb;
