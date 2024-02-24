@@ -81,6 +81,7 @@ body {
 
 .status {
   margin-bottom: 10px;
+  color: #bbb;
 }
 .game {
   display: flex;
