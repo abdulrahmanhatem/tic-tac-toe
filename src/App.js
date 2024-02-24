@@ -5,7 +5,7 @@ function Square({value, onSquareClick, win}){
   return <button className={`square ${win ? "win" : ""}`} onClick={onSquareClick}>{value}</button>;
 }
 
-export function Board({xIsNext, squares, onPlay}) {
+export function Board({xIsNext, squares, onPlay, getCurrent}) {
   const winner = calculateWinner(squares);
   let status;
   let full = squares.every(i => i !== null);
@@ -23,19 +23,17 @@ export function Board({xIsNext, squares, onPlay}) {
 
   function handleClick (i) {
     const nextSquares = squares.slice();
-    
+
     
     if (squares[i] || winner){
       return;
     }
-    
-  
-
+    getCurrent(i)
     nextSquares[i] = xIsNext ? "X" : "O";
     onPlay(nextSquares);
-    let content;
     
-}
+    
+  }
 
   return (
     <>
@@ -47,7 +45,7 @@ export function Board({xIsNext, squares, onPlay}) {
           win = winner.includes(i) ? true : false;
         }
         
-        return <Square value={squares[i]} onSquareClick={() => handleClick(i)} key={i} win={win}/>;
+        return <Square value={squares[i]} onSquareClick={() => handleClick(i)} key={i} win={win}  getSquare={getCurrent}/>;
       })}
     </div>
       
@@ -59,6 +57,7 @@ export default function Game() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
   const [isAscending, setIsAscending] = useState(true);
+  const [indexes, setIndexes] = useState([]);
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
 
@@ -72,18 +71,34 @@ export default function Game() {
     setCurrentMove(nextMove);
   }
 
+  function getCurrentSquare(i) {
+    const nextIndexes = indexes.slice();
+    setIndexes([...nextIndexes, i]) 
+  }
 
+  let locations = [
+    {row:1, col:1},
+    {row:1, col:2},
+    {row:1, col:3},
+    {row:2, col:1},
+    {row:2, col:2},
+    {row:2, col:3},
+    {row:3, col:1},
+    {row:3, col:2},
+    {row:3, col:3},
+  ]
 
   const moves = history.map((squares, move) => {
     let description;
+
     if (move > 0) {  
-      description = move === currentMove ? 'Your are to Move #' + move :  'Go to move #' + move;
+      description = move + "." + squares[indexes[move-1]] + ` (${locations[indexes[move-1]]?.row}, ${locations[indexes[move-1]]?.col})`;
     } else {
       description = 'Start The Game';
     }
     return (
       <li key={move}>
-        <button onClick={() => jumpTo(move)}>{description}</button>
+        <button onClick={() => jumpTo(move)} class={move === currentMove && "current" }>{description}</button>
       </li>
     );
   });
@@ -91,13 +106,13 @@ export default function Game() {
   return (
     <div className="game">
       <div className="game-board">
-        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay}/>
+        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} getCurrent={getCurrentSquare}/>
       </div>
       <div className="game-info">
         <button onClick={() =>setIsAscending(!isAscending)}>Sort</button>
-        <ol style={{
+        <ul style={{
           flexDirection: isAscending ? "column" : "column-reverse" 
-        }}>{moves}</ol>
+        }}>{moves}</ul>
       </div>
     </div>
   )

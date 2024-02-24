@@ -3,6 +3,9 @@ body {
   padding: 0;
   background: #222;
 }
+ul{
+  list-style: none;
+}
 .list{
   width: 150px;
   display: flex;
@@ -35,24 +38,29 @@ body {
 .game-info {
   margin-left: 20px;
 }
-.game-info ol{
+.game-info ul{
   display: flex;
-    flex-direction: column;
+  flex-direction: column;
 }
 .game-info ol > *{
   margin-block: .5rem;
   color: #bbb;
 }
 .game-info button{
+  border: 1px solid #11111150;
   background: #222;
-  border: 1px solid #eee;
   color: #bbb;
   padding: .5rem;
   transition: all ease-in-out .3s;
   cursor: pointer;
+  border-radius: 5px;
+  margin-block-end: .5rem;
 }
 .game-info button:hover, 
 .game-info button:active
 {
+  background: #111;
+}
+.game-info button.current{
   background: #111;
 }
