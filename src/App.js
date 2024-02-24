@@ -92,13 +92,13 @@ export default function Game() {
     let description;
 
     if (move > 0) {  
-      description = move + "." + squares[indexes[move-1]] + ` (${locations[indexes[move-1]]?.row}, ${locations[indexes[move-1]]?.col})`;
+      description = move + ". " + squares[indexes[move-1]] + ` (${locations[indexes[move-1]]?.row}, ${locations[indexes[move-1]]?.col})`;
     } else {
       description = 'Start The Game';
     }
     return (
       <li key={move}>
-        <button onClick={() => jumpTo(move)} class={move === currentMove && "current" }>{description}</button>
+        <button onClick={() => jumpTo(move)} className={move === currentMove ? "current" : "" }>{description}</button>
       </li>
     );
   });
