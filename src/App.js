@@ -20,7 +20,6 @@ export function Board({xIsNext, squares, onPlay}) {
 
     nextSquares[i] = xIsNext ? "X" : "O";
     onPlay(nextSquares);
-
     let content;
     
 }
@@ -74,6 +73,7 @@ export default function Game() {
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay}/>
       </div>
       <div className="game-info">
+        <button>Sort</button>
         <ol>{moves}</ol>
       </div>
     </div>
