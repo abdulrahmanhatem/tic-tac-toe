@@ -38,7 +38,7 @@ ul{
 }
 .square {
   background-color: transparent;
-  border: 1px solid #eee;
+  border: 1px dashed #eee;
   color: #bbb;
   font-size: calc(1 * var(--view-ration));
   font-weight: bold;
@@ -47,6 +47,21 @@ ul{
   padding: 0;
   text-align: center;
   cursor: pointer;
+}
+.square:nth-of-type(odd){
+  border:none;
+}
+.square:nth-of-type(2){
+  border-block-start:none;
+}
+.square:nth-of-type(4){
+  border-inline-start:none;
+}
+.square:nth-of-type(6){
+  border-inline-end:none;
+}
+.square:nth-of-type(8){
+  border-block-end:none;
 }
 .square.win{
   background: #003100;
