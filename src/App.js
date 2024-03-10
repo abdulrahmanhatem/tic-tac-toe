@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, memo} from "react";
 
 function Square({value, onSquareClick, win}){
 
@@ -24,20 +24,17 @@ export function Board({xIsNext, squares, onPlay, getCurrent}) {
   function handleClick (i) {
     const nextSquares = squares.slice();
 
-    
     if (squares[i] || winner){
       return;
     }
     getCurrent(i)
     nextSquares[i] = xIsNext ? "X" : "O";
     onPlay(nextSquares);
-    
-    
   }
 
   return (
     <>
-    <div className="status">{status}</div>
+    
     <div className="list">
       {squares.map((square, i) => {
         let win;
@@ -47,8 +44,10 @@ export function Board({xIsNext, squares, onPlay, getCurrent}) {
         
         return <Square value={squares[i]} onSquareClick={() => handleClick(i)} key={i} win={win}  getSquare={getCurrent}/>;
       })}
+      <DashedLines count={4}/>
     </div>
-      
+    <div className="status">{status}</div>
+    
     </>
   );
 }
@@ -136,4 +135,39 @@ function calculateWinner(squares){
     }
   }
   return null
+}
+
+let DashedLines = memo(function DashedLines({count}){
+  return (
+    [...Array(count)].map((li, i) => <DashedLine key={i}/>)
+  )
+})
+
+function DashedLine(){
+  let random = Math.ceil(60 * Math.random()) ;  
+  return (
+    <svg viewBox="0 0 100 100"className="dashed">
+    <path 
+        d="M 0 0 L 0 100 z"
+        stroke-miterlimit="0" 
+        fill="none" 
+        stroke="#fff"
+        stroke-width=".2"
+        stroke-dasharray={
+          `
+          ${Math.ceil(10)} 
+          ${Math.ceil(6 * Math.random())} 
+          ${Math.ceil(5 * Math.random())}
+        `
+        }
+        stroke-dashoffset="1">
+        <animate
+            attributeName="stroke-dashoffset"
+            values="10;0"
+            dur="30s"
+            calcMode="linear"
+            repeatCount="indefinite" />
+    </path>
+  </svg>
+  )
 }

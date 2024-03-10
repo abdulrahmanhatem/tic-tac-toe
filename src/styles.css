@@ -35,34 +35,49 @@ ul{
   block-size: calc(30 * var(--view-ration));
   display: flex;
   flex-wrap: wrap;
+  position: relative;
 }
 .square {
   background-color: transparent;
-  border: 1px dashed #eee;
+  border: none;
   color: #bbb;
   font-size: calc(1 * var(--view-ration));
   font-weight: bold;
-  inline-size: 33%;
-  block-size: 33%;;
+  inline-size: 33.333%;
+  block-size: 33.333%;;
   padding: 0;
   text-align: center;
   cursor: pointer;
 }
-.square:nth-of-type(odd){
-  border:none;
+svg.dashed {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
 }
-.square:nth-of-type(2){
-  border-block-start:none;
+svg.dashed:nth-of-type(1) {
+  inset-inline-start: 33%;
+  inset-block-start: 0;
 }
-.square:nth-of-type(4){
-  border-inline-start:none;
+svg.dashed:nth-of-type(2){
+  inset-inline-start: 66.66%;
+  inset-block-start: 0;
 }
-.square:nth-of-type(6){
-  border-inline-end:none;
+svg.dashed:nth-of-type(3){
+  inset-inline-start: 0;
+  inset-block-start: 33%;
+  rotate: 0 0 1 90deg;
 }
-.square:nth-of-type(8){
-  border-block-end:none;
+svg.dashed:nth-of-type(4){
+  inset-inline-start: 0;
+  inset-block-start: 66.66%;
+  rotate: 0 0 1 90deg;
 }
+
+
+
+
+
 .square.win{
   background: #003100;
 }
