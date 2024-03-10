@@ -34,7 +34,6 @@ export function Board({xIsNext, squares, onPlay, getCurrent}) {
 
   return (
     <>
-    
     <div className="list">
       {squares.map((square, i) => {
         let win;
@@ -91,9 +90,15 @@ export default function Game() {
     let description;
 
     if (move > 0) {  
-      description = move + ". " + squares[indexes[move-1]] + ` (${locations[indexes[move-1]]?.row}, ${locations[indexes[move-1]]?.col})`;
+      description = 
+      <div className="description">
+        <span className="move">0{move}.</span>  
+        <span className="player">{squares[indexes[move-1]]}</span> 
+        <span className="square">Row: <strong>{locations[indexes[move-1]]?.row}</strong> Column: <strong>{locations[indexes[move-1]]?.col}</strong></span> 
+      </div>;
+
     } else {
-      description = 'Start The Game';
+      description = <span className="start">Start The Game</span>;
     }
     return (
       <li key={move}>
@@ -108,7 +113,7 @@ export default function Game() {
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} getCurrent={getCurrentSquare}/>
       </div>
       <div className="game-info">
-        <button onClick={() =>setIsAscending(!isAscending)}>Sort</button>
+        <button onClick={() =>setIsAscending(!isAscending)} className="sort">Sort</button>
         <ul style={{
           flexDirection: isAscending ? "column" : "column-reverse" 
         }}>{moves}</ul>
@@ -139,19 +144,23 @@ function calculateWinner(squares){
 
 let DashedLines = memo(function DashedLines({count}){
   return (
-    [...Array(count)].map((li, i) => <DashedLine key={i}/>)
+    <div className="dashed">
+      {
+        [...Array(count)].map((li, i) => <DashedLine key={i}/>)
+      }
+    </div>
   )
 })
 
 function DashedLine(){
   let random = Math.ceil(60 * Math.random()) ;  
   return (
-    <svg viewBox="0 0 100 100"className="dashed">
+    <svg viewBox="0 0 100 100" className="line">
     <path 
         d="M 0 0 L 0 100 z"
         stroke-miterlimit="0" 
         fill="none" 
-        stroke="#fff"
+        stroke="#555"
         stroke-width=".2"
         stroke-dasharray={
           `
