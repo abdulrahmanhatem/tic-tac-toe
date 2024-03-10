@@ -92,7 +92,7 @@ export default function Game() {
     if (move > 0) {  
       description = 
       <div className="description">
-        <span className="move">0{move}.</span>  
+        <span className="move">0{move}</span>  
         <span className="player">{squares[indexes[move-1]]}</span> 
         <span className="square">Row: <strong>{locations[indexes[move-1]]?.row}</strong> Column: <strong>{locations[indexes[move-1]]?.col}</strong></span> 
       </div>;
