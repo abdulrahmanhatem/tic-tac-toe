@@ -102,12 +102,24 @@ svg.line:nth-of-type(4){
 }
 .game-info {
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.game-info .options {
+  display: flex;
+  justify-content: space-between;
+  gap: 5rem;
+}
+.game-info .options button {
+  border: none;
+  padding: .5rem;
 }
 .game-info ul{
   display: flex;
   flex-direction: column;
 }
-.game-info button{
+.game-info ul button{
   border-bottom: .1rem solid var(--grey);
   padding: .5rem;
   transition: all ease-in-out .3s;
@@ -139,7 +151,8 @@ svg.line:nth-of-type(4){
 }
 .game-info button:hover, 
 .game-info button:active, 
-.square.win
+.square.win, 
+.game-info .options button 
 {
   background: var(--primary-color);
   color: var(--black);

@@ -58,6 +58,7 @@ export default function Game() {
   const [indexes, setIndexes] = useState([]);
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
+  let sort="";
 
   function handlePlay(nextSquares) {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
@@ -87,33 +88,41 @@ export default function Game() {
   ]
 
   const moves = history.map((squares, move) => {
-    let description;
+    
 
     if (move > 0) {  
-      description = 
+      if (move > 1) {
+        sort = <button onClick={() =>setIsAscending(!isAscending)} className="sort">{isAscending ? "Descending" : "Ascending"}</button>
+      }
+      let description = 
       <div className="description">
         <span className="move">0{move}</span>  
         <span className="player">{squares[indexes[move-1]]}</span> 
         <span className="square">Row: <strong>{locations[indexes[move-1]]?.row}</strong> Column: <strong>{locations[indexes[move-1]]?.col}</strong></span> 
       </div>;
 
-    } else {
-      description = <span className="start">Start The Game</span>;
+      return (
+        <li key={move}>
+          <button onClick={() => jumpTo(move)} className={move === currentMove ? "current" : "" }>{description}</button>
+        </li>
+      );
     }
-    return (
-      <li key={move}>
-        <button onClick={() => jumpTo(move)} className={move === currentMove ? "current" : "" }>{description}</button>
-      </li>
-    );
+
+   
   });
 
+  console.log(history.every(i => i !== null))
   return (
     <div className="game">
       <div className="game-board">
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} getCurrent={getCurrentSquare}/>
       </div>
       <div className="game-info">
-        <button onClick={() =>setIsAscending(!isAscending)} className="sort">Sort</button>
+        <div className="options">
+        {sort}
+        <button onClick={() => jumpTo(0)} className="start">Start { history.every(i => i !== null) ? "Again" : "Game"}</button>
+       
+        </div>
         <ul style={{
           flexDirection: isAscending ? "column" : "column-reverse" 
         }}>{moves}</ul>
@@ -158,18 +167,18 @@ function DashedLine(){
     <svg viewBox="0 0 100 100" className="line">
     <path 
         d="M 0 0 L 0 100 z"
-        stroke-miterlimit="0" 
+        strokeMiterlimit="0" 
         fill="none" 
         stroke="#dcb288"
-        stroke-width=".2"
-        stroke-dasharray={
+        strokeWidth=".2"
+        strokeDasharray={
           `
           ${Math.ceil(10)} 
           ${Math.ceil(6 * Math.random())} 
           ${Math.ceil(5 * Math.random())}
         `
         }
-        stroke-dashoffset="1">
+        strokeDashoffset="1">
         <animate
             attributeName="stroke-dashoffset"
             values="10;0"
