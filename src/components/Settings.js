@@ -1,27 +1,14 @@
 import { useState } from 'react';
-import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Slider from '@mui/material/Slider';
+import Switch from '@mui/material/Switch';
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
 
 export default function Settings() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
 
   return (
     <div>
@@ -30,18 +17,48 @@ export default function Settings() {
       <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Settings
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            
-          </Typography>
-          <Slider/>
-        </Box>
+        <div className='modal'>
+          <div className='modal-title'>
+            <span>Settings</span>
+            <span className='close'>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                    <path d="M338.1 413.4c3.1 3.1 8.2 3.1 11.3 0s3.1-8.2 0-11.3L203.3 256 349.4 109.9c3.1-3.1 3.1-8.2 0-11.3s-8.2-3.1-11.3 0L192 244.7 45.9 98.6c-3.1-3.1-8.2-3.1-11.3 0s-3.1 8.2 0 11.3L180.7 256 34.6 402.1c-3.1 3.1-3.1 8.2 0 11.3s8.2 3.1 11.3 0L192 267.3 338.1 413.4z" />
+                </svg>
+            </span>
+          </div>
+          <div className='modal-description'>
+            <div className="modal-group">
+                <div className="modal-option">
+                    <span className='option-label'>
+                        <span className='option-icon'></span>
+                        Background Music
+                    </span>
+                    <span className='option-action'>
+                    <Switch defaultChecked/>
+                    </span>
+                </div>
+                <div className="modal-option">
+                    <Slider size='small'/>
+                </div>
+            </div>
+            <div className="modal-group">
+                <div className="modal-option">
+                    <span className='option-label'>
+                        <span className='option-icon'></span>
+                        Sound Effects
+                    </span>
+                    <span className='option-action'>
+                    <Switch defaultChecked/>
+                    </span>
+                </div>
+                <div className="modal-option">
+                    <Slider size='small'/>
+                </div>
+            </div>
+          </div>
+          
+        </div>
       </Modal>
     </div>
   );

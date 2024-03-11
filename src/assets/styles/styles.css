@@ -185,25 +185,58 @@ svg.line:nth-of-type(4){
 .settings-icon .outer{
   fill: var(--primary-color);
 }
-
-
-.popup-content {
-  margin: auto;
-  background: rgb(255, 255, 255);
-  width: 50%;
-  padding: 5px;
+.modal {
+  background-color: var(--black);
+  border: none;
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+  inline-size: 400px;
+  box-shadow: 0 0 2rem 0rem #dcb28812;
+  padding: 2rem;
+  border-radius: 1rem;
 }
-.popup-arrow {
-  color: rgb(255, 255, 255);
+.modal .modal-title{
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
 }
-[role='tooltip'].popup-content {
-  width: 200px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+.modal .modal-title .close{
+  inline-size: 1.5rem;
+  display: block;
 }
-
-.popup-overlay {
-  background: rgba(0, 0, 0, 0.5);
+.modal .modal-title .close svg{
+  fill: var(--primary-color);
+  inline-size: 100%;
+  block-size: 100%;
 }
-[data-popup='tooltip'].popup-overlay {
-  background: red;
+.modal-description {
+  padding-block: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.modal .modal-group {
+  background: #060606;
+  border: 1px solid #0e0e0e;
+  border-radius: .5rem;
+  padding: 1rem;
+}
+.modal .modal-option{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.modal .modal-option .Mui-checked{
+  color: var(--primary-color);
+}
+.css-1yjjitx-MuiSwitch-track {
+  background-color: #474646;
+}
+.modal .modal-option .Mui-checked +.MuiSwitch-track{
+  background-color: var(--primary-color);
+}
+.modal .modal-option .MuiSlider-root {
+  color: var(--primary-color);
 }

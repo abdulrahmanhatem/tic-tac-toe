@@ -5,11 +5,8 @@ function Square({value, onSquareClick, win}){
     return <button className={`square ${win ? "win" : ""}`} onClick={onSquareClick}>{value}</button>;
 }
 
-
 export default function Board({xIsNext, squares, onPlay, getCurrent}) {
     const winners = calculateWinner(squares);
-    console.log('winners', winners);
-
     let status;
     let full = squares.every(i => i !== null);
 
