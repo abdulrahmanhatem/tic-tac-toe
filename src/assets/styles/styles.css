@@ -119,6 +119,7 @@ svg.line:nth-of-type(4){
   padding: .5rem;
   font-weight: 900;
   font-size: 1.1rem;
+  border-radius: .25rem;
 }
 .game-info ul{
   display: flex;
