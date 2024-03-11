@@ -160,7 +160,7 @@ function DashedLine(){
         d="M 0 0 L 0 100 z"
         stroke-miterlimit="0" 
         fill="none" 
-        stroke="#555"
+        stroke="#dcb288"
         stroke-width=".2"
         stroke-dasharray={
           `
@@ -173,7 +173,7 @@ function DashedLine(){
         <animate
             attributeName="stroke-dashoffset"
             values="10;0"
-            dur="30s"
+            dur="10s"
             calcMode="linear"
             repeatCount="indefinite" />
     </path>

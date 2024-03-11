@@ -8,17 +8,21 @@
 }
 :root{
   --view-ratio: 1rem;
+  --primary-font: "nutellaBold", serif;
   --secondary-font: "sorreda", serif;
-  --fancy-font: "nutellaBold", serif;
+  --primary-color: #dcb288;
+  --grey: #444;
+  --black: #000000;
 }
 body {
   display: flex;
-  background: #000000;
+  background: var(--black);
   padding: 0;
   margin: 0;
   block-size: 100svh;
   inline-size: 100%;
-  font-family: var(--fancy-font);
+  font-family: var(--primary-font);
+  color: var(--primary-color);
 }
 #root{
   inline-size: 100%;
@@ -27,6 +31,14 @@ body {
 ul{
   list-style: none;
   padding: 0;
+}
+button{
+  color: var(--primary-color);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--primary-font);
+  transition: .3s all ease-in-out;
 }
 .game {
   display: flex;
@@ -51,16 +63,13 @@ ul{
   position: relative;
 }
 .game-board .square {
-  background-color: transparent;
-  border: none;
-  color: #bbb;
   font-size: calc(1 * var(--view-ratio));
   font-weight: bold;
   inline-size: 33.333%;
-  block-size: 33.333%;;
+  block-size: 33.333%;
   padding: 0;
   text-align: center;
-  cursor: pointer;
+  font-size: 3rem;
 }
 .game-board .dashed {
   position: absolute;
@@ -99,49 +108,47 @@ svg.line:nth-of-type(4){
   flex-direction: column;
 }
 .game-info button{
-  border: none;
-  border-bottom: .1rem solid #999;
-  background: transparent;
-  color: #bbb;
+  border-bottom: .1rem solid var(--grey);
   padding: .5rem;
   transition: all ease-in-out .3s;
-  cursor: pointer;
-  margin-block-end: .5rem;
+  block-size: 7svh;
 }
 .game-info .description {
   display: flex;
   align-items: center;
 }
 .game-info .description .move {
-  color: #555;
+  color: var(--grey);
   margin-inline-end: 1rem;
   font-family: var(--secondary-font);
-  inline-size: 1rem;
+  inline-size: 2rem;
+  font-weight: 900;
+  font-size: 1.2rem;
 }
 .game-info .description .player {
-  margin-inline-end: 5rem;
+  margin-inline-end: 8rem;
   font-weight: 900;
+  font-size: 1.4rem;
 }
 .game-info .description .square{
   font-weight: 100;
-  font-size: 0.7rem;
-  font-family: var(--fancy-font);
+  font-size: 0.9rem;
 }
 .game-info .description .square strong{
   font-weight: 500;
 }
 .game-info button:hover, 
-.game-info button:active
+.game-info button:active, 
+.square.win
 {
-  background: #111;
+  background: var(--primary-color);
+  color: var(--black);
 }
 .game-info button.current{
   background: #111;
 }
-.square.win{
-  background: #003100;
-}
 .status {
-  margin-bottom: 10px;
-  color: #bbb;
+  margin-block-start: 3rem;
+  font-size: 2rem;
+  color: var(--primary-color);
 }
