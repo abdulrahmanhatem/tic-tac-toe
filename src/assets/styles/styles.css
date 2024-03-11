@@ -111,6 +111,7 @@ svg.line:nth-of-type(4){
 .game-info .options {
   display: flex;
   justify-content: space-between;
+  flex-direction: row-reverse;
   gap: 5rem;
 }
 .game-info .options button {

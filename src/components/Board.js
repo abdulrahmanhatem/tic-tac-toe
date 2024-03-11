@@ -7,12 +7,17 @@ function Square({value, onSquareClick, win}){
 
 
 export default function Board({xIsNext, squares, onPlay, getCurrent}) {
-    const winner = calculateWinner(squares);
+    const winners = calculateWinner(squares);
+    
+
+    console.log('winners', winners);
+
     let status;
     let full = squares.every(i => i !== null);
 
-    if(winner){
-        status = "Winner: " + squares[winner[0]];
+    if(winners){
+        const doubleWin = winners.length > 3;
+        status = "Winner: " + (doubleWin ? " Double Win for " : "") + squares[winners[0]];
     }else{
         if(full){
         status = "Draw!";
@@ -25,7 +30,7 @@ export default function Board({xIsNext, squares, onPlay, getCurrent}) {
     function handleClick (i) {
         const nextSquares = squares.slice();
 
-        if (squares[i] || winner){
+        if (squares[i] || winners){
         return;
         }
         getCurrent(i)
@@ -38,8 +43,8 @@ export default function Board({xIsNext, squares, onPlay, getCurrent}) {
         <div className="list">
         {squares.map((square, i) => {
             let win;
-            if (winner) {
-            win = winner.includes(i) ? true : false;
+            if (winners) {
+                win = winners.includes(i) ? true : false;
             }
             
             return <Square value={squares[i]} onSquareClick={() => handleClick(i)} key={i} win={win}  getSquare={getCurrent}/>;
