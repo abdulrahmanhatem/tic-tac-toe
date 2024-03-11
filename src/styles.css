@@ -65,11 +65,13 @@ button{
 .game-board .square {
   font-size: calc(1 * var(--view-ratio));
   font-weight: bold;
-  inline-size: 33.333%;
-  block-size: 33.333%;
+  inline-size: calc(33.333% - 2rem);
+  block-size: calc(33.333% - 2rem);
   padding: 0;
   text-align: center;
   font-size: 3rem;
+  margin: 1rem;
+  border-radius: 1rem;
 }
 .game-board .dashed {
   position: absolute;
@@ -114,6 +116,8 @@ svg.line:nth-of-type(4){
 .game-info .options button {
   border: none;
   padding: .5rem;
+  font-weight: 900;
+  font-size: 1.1rem;
 }
 .game-info ul{
   display: flex;
@@ -152,13 +156,14 @@ svg.line:nth-of-type(4){
 .game-info button:hover, 
 .game-info button:active, 
 .square.win, 
-.game-info .options button 
+.game-info .options button
 {
   background: var(--primary-color);
   color: var(--black);
 }
 .game-info button.current{
-  background: #111;
+  background: #222;
+  color: var(--primary-color);
 }
 .status {
   margin-block-start: 3rem;

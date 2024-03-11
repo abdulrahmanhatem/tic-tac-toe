@@ -111,7 +111,6 @@ export default function Game() {
    
   });
 
-  console.log(history.every(i => i !== null))
   return (
     <div className="game">
       <div className="game-board">
@@ -120,8 +119,7 @@ export default function Game() {
       <div className="game-info">
         <div className="options">
         {sort}
-        <button onClick={() => jumpTo(0)} className="start">Start { history.every(i => i !== null) ? "Again" : "Game"}</button>
-       
+        <button onClick={() => jumpTo(0)} className="start">Start { history.length > 1 ? "Again" : "Game"}</button>
         </div>
         <ul style={{
           flexDirection: isAscending ? "column" : "column-reverse" 
