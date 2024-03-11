@@ -65,8 +65,8 @@ button{
 .game-board .square {
   font-size: calc(1 * var(--view-ratio));
   font-weight: bold;
-  inline-size: calc(33.333% - 2rem);
-  block-size: calc(33.333% - 2rem);
+  inline-size: calc(8 * var(--view-ratio));
+  block-size: calc(8 * var(--view-ratio));
   padding: 0;
   text-align: center;
   font-size: 3rem;
@@ -166,7 +166,7 @@ svg.line:nth-of-type(4){
   color: var(--primary-color);
 }
 .status {
-  margin-block-start: 3rem;
+  margin-block-start: 2rem;
   font-size: 2rem;
   color: var(--primary-color);
 }
