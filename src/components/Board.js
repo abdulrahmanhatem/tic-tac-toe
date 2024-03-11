@@ -8,8 +8,6 @@ function Square({value, onSquareClick, win}){
 
 export default function Board({xIsNext, squares, onPlay, getCurrent}) {
     const winners = calculateWinner(squares);
-    
-
     console.log('winners', winners);
 
     let status;

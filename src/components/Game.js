@@ -1,7 +1,8 @@
 
 import { useState } from 'react'
 import Board from './Board'; 
-import Info from "./Info";
+import Info from './Info';
+import Settings from './Settings';
 
 export default function Game() {
     const [history, setHistory] = useState([Array(9).fill(null)]);
@@ -31,6 +32,9 @@ export default function Game() {
         <div className="game-info">
           <Info currentMove={currentMove} indexes={indexes} history={history} setCurrentMove={setCurrentMove}/>
         </div>
+        <span className='settings'>
+          <Settings/>
+        </span>
       </div>
     )
   }
