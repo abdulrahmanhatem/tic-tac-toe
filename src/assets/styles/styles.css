@@ -39,6 +39,7 @@ button{
   cursor: pointer;
   font-family: var(--primary-font);
   transition: .3s all ease-in-out;
+  outline: none;
 }
 .game {
   display: flex;
@@ -173,7 +174,7 @@ svg.line:nth-of-type(4){
   color: var(--primary-color);
 }
 .settings-icon {
-  inline-size: 2rem;
+  inline-size: 2.5rem;
   display: block;
   position: fixed;
   inset-block-end: 2rem;
@@ -197,6 +198,7 @@ svg.line:nth-of-type(4){
   box-shadow: 0 0 2rem 0rem #dcb28812;
   padding: 2rem;
   border-radius: 1rem;
+  outline: none;
 }
 .modal .modal-title{
   font-size: 1.5rem;

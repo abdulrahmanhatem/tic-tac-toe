@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Board from './Board'; 
 import Info from './Info';
 import Settings from './Settings';
-import Sound from "./Sound";
+
 
 export default function Game() {
     const [history, setHistory] = useState([Array(9).fill(null)]);
@@ -35,7 +35,7 @@ export default function Game() {
         </div>
         <span className='settings'>
           <Settings/>
-          <Sound/>
+          
         </span>
       </div>
     )

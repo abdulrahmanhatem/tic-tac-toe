@@ -1,27 +1,20 @@
-import { useState, useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import background from "../assets/sounds/background.mp3";
+import useSound from "../hooks/useSound";
 
-export default function Sound() {
-    return (
-        <>
-            <BackgroundMusic/>
-        </>
-    )
-}
 
-export function BackgroundMusic() {
+export default function BackgroundMusic({isMute, volume}) {
     const backgroundRef = useRef();
-    const [isMute, setIsMute] = useState(true);
 
-    useEffect(() => {
-        addEventListener("click", () => {
-            backgroundRef.current.play();
-        })
-       
-    })
+    if (backgroundRef.current) {
+        backgroundRef.current.volume = volume /100;
+    }
+
+    useSound(backgroundRef, isMute)
+
     return (
         <>
-            <audio src={background} ref={backgroundRef} loop autoPlay></audio>
+            <audio src={background} ref={backgroundRef} loop autoPlay controlsList='nodownload' controls></audio>
         </>
     )
 }
