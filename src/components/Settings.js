@@ -2,7 +2,12 @@ import { useState } from 'react';
 import Modal from '@mui/material/Modal';
 import Slider from '@mui/material/Slider';
 import Switch from '@mui/material/Switch';
-import {BackgroundMusic} from "./Sound";
+import {Sound} from "./Sound";
+
+// const SettingsContext = createContext({
+//     background:{isMute:false, volume: 50}, 
+//     SFX:{isMute:false, volume: 50}, 
+// })
 
 export default function Settings() {
   const [open, setOpen] = useState(false);
@@ -11,7 +16,7 @@ export default function Settings() {
   const [isSFXMute, setIsSFXMute] = useState(false);
   const [sFXVolume, setSFXVolume] = useState(50);
 
-  console.log(isBackgroundMute);
+
 
   return (
     <div>
@@ -62,7 +67,7 @@ export default function Settings() {
         </div>
       </Modal>
       <div>
-        <BackgroundMusic isMute={isBackgroundMute} volume={backgroundVolume}/>
+        <Sound type="background" isMute={isBackgroundMute} volume={backgroundVolume}/>
       </div>
     </div>
   );
