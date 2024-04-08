@@ -39,7 +39,7 @@ export default function Game() {
      
         
         <span className='settings'>
-          {/* <Settings/> */}
+          <Settings/>
         </span>
       </div>
     )
