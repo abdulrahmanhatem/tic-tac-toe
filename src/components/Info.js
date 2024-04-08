@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import sortIcon from "../assets/images/sort.png";
+import againIcon from "../assets/images/again.png";
 
 export default function Info({currentMove, setCurrentMove, indexes, history}) {
     const [isAscending, setIsAscending] = useState(true);
@@ -23,10 +25,14 @@ export default function Info({currentMove, setCurrentMove, indexes, history}) {
     const moves = history.map((squares, move) => {
         if (move > 0) {  
             if (move > 0) {
-                start =  <button onClick={() => jumpTo(0)} className="start">Start { history.length > 1 ? "Again" : "Game"}</button>
-            }
+                start =     <button onClick={() => jumpTo(0)} className="start" title='Again'>
+                                <img src={againIcon} alt ="Again"/>
+                            </button>
+                }
             if (move > 1) {
-                sort = <button onClick={() =>setIsAscending(!isAscending)} className="sort">{isAscending ? "Descending" : "Ascending"}</button>
+                sort =  <button onClick={() =>setIsAscending(!isAscending)} className="sort"  title={isAscending ? "Descending" : "Ascending"}>
+                            <img src={sortIcon} alt ="Sort" className={isAscending ? "" : "asc"}/>
+                        </button>
             }
             let description = 
             <div className="description">
