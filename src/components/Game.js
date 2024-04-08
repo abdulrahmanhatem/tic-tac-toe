@@ -29,22 +29,17 @@ export default function Game() {
     return (
       <div className="game">
         
-        <SettingsContext.Provider value={
-          {
-            background:{isMute:false, volume: 50}, 
-            SFX:{isMute:false, volume: 50}, 
-          }
-        }>
+       
           <div className="game-board">
             <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} getCurrent={getCurrentSquare}/>
           </div>
           <div className="game-info">
             <Info currentMove={currentMove} indexes={indexes} history={history} setCurrentMove={setCurrentMove}/>
           </div>
-        </SettingsContext.Provider>
+     
         
         <span className='settings'>
-          <Settings/>
+          {/* <Settings/> */}
         </span>
       </div>
     )

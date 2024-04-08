@@ -10,9 +10,9 @@ function Square({value, onSquareClick, win}){
 export default function Board({xIsNext, squares, onPlay, getCurrent}) {
     let [sound, setSound] = useState("tick");
 
-    let sFXSettings = useContext(SettingsContext);
+    // let sFXSettings = useContext(SettingsContext);
 
-    console.log(sFXSettings);
+    // console.log(sFXSettings);
 
     const winners = calculateWinner(squares);
     let status;
