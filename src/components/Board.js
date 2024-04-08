@@ -4,7 +4,7 @@ import calculateWinner from '../helpers/calculateWinner';
 import {Sound} from "./Sound";
 
 function Square({value, onSquareClick, win}){
-    return <button className={`square ${win ? "win" : ""}`} onClick={onSquareClick}>{value}</button>;
+    return <button className={`square ${win ? "win" : ""}`} onClick={onSquareClick}>{value && <span>{value}</span>}</button>;
 }
 
 export default function Board({xIsNext, squares, onPlay, getCurrent}) {
