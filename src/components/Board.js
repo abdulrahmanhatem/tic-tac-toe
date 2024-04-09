@@ -3,6 +3,7 @@ import Lines from './Lines';
 import calculateWinner from '../helpers/calculateWinner';
 import useSound from '../hooks/useSound';
 import Confetti from "react-confetti";
+import { updateResult, getResult } from "../helpers/result";
 
 function Square({value, onSquareClick, win}){
     return <button className={`square ${win ? "win" : ""}`} onClick={onSquareClick}>{value && <span>{value}</span>}</button>;
@@ -11,6 +12,8 @@ function Square({value, onSquareClick, win}){
 export default function Board({xIsNext, squares, onPlay, getCurrent, settings}) {
     const [startBg, setStartBg] = useState(false)
     const {isSFXMute, sFXVolume} = settings;
+    const result = getResult()
+    console.log(result);
 
     let winners, full, status ;
 
@@ -52,10 +55,11 @@ export default function Board({xIsNext, squares, onPlay, getCurrent, settings}) 
         full = nextSquares.every(i => i !== null);
         if(winners){
             useSound("win", sFXVolume, isSFXMute)
-            
+            updateResult(nextSquares[i])
         }else{
             if(full){
                 useSound("draw", sFXVolume, isSFXMute)
+                updateResult("draw")
             }
         }
         
@@ -76,6 +80,11 @@ export default function Board({xIsNext, squares, onPlay, getCurrent, settings}) 
         <Lines count={4}/>
         </div>
         <div className="status">{status}</div>
+        <div className="results">
+            <span>x: {result.X ? result.X : 0}</span>
+            <span>o: {result.O? result.O : 0}</span>
+            <span>Draw: {result.draw? result.draw : 0}</span>
+        </div>
         {winners && 
         <Confetti 
             numberOfPieces={500} 
