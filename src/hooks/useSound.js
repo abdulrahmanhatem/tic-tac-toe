@@ -3,6 +3,9 @@ import {background, x, o, win, draw, buzz} from "../assets/sounds";
 export default function useSound(type, volume=50, isMute) {
     let sound;
     switch (type) {
+        case "background":
+            sound = background;
+            break;
         case "win":
             sound = win;
             break;

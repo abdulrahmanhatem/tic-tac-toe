@@ -1,13 +1,20 @@
+import { useState, useEffect } from 'react'
 import Lines from './Lines';
 import calculateWinner from '../helpers/calculateWinner';
 import useSound from '../hooks/useSound';
+import Confetti from "react-confetti";
 
 function Square({value, onSquareClick, win}){
     return <button className={`square ${win ? "win" : ""}`} onClick={onSquareClick}>{value && <span>{value}</span>}</button>;
 }
 
 export default function Board({xIsNext, squares, onPlay, getCurrent, settings}) {
+    const [startBg, setStartBg] = useState(false)
     const {isSFXMute, sFXVolume, isBgMute, bgVolume} = settings;
+
+    // useEffect(()=>{
+    //     useSound("background", bgVolume, isBgMute)
+    // }, [bgVolume, isBgMute, startBg])
 
     let winners, full, status ;
 
@@ -24,8 +31,13 @@ export default function Board({xIsNext, squares, onPlay, getCurrent, settings}) 
             status = "Next turn: " + (xIsNext ? "X" : "O");
         }
     }
+    
 
     function handleClick (i) {
+        if (!startBg) {
+            
+            setStartBg(true)
+        }
         
         const nextSquares = squares.slice();  
 
@@ -38,14 +50,13 @@ export default function Board({xIsNext, squares, onPlay, getCurrent, settings}) 
 
         getCurrent(i)
         nextSquares[i] = xIsNext ? "X" : "O";
-        useSound((xIsNext ? "x" : "o"), sFXVolume, isSFXMute)
+        useSound((xIsNext ? "x" : "o"), sFXVolume, isSFXMute);
 
-
-        
         winners = calculateWinner(nextSquares);
         full = nextSquares.every(i => i !== null);
         if(winners){
             useSound("win", sFXVolume, isSFXMute)
+            
         }else{
             if(full){
                 useSound("draw", sFXVolume, isSFXMute)
@@ -69,6 +80,14 @@ export default function Board({xIsNext, squares, onPlay, getCurrent, settings}) 
         <Lines count={4}/>
         </div>
         <div className="status">{status}</div>
+        {winners && 
+        <Confetti 
+            numberOfPieces={500} 
+            colors={["#dcb288", "#444", "#000"]} 
+            tweenDuration={3000}
+            recycle={false}
+            />
+            }
         </>
     );
 }
