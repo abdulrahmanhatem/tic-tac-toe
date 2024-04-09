@@ -10,11 +10,7 @@ function Square({value, onSquareClick, win}){
 
 export default function Board({xIsNext, squares, onPlay, getCurrent, settings}) {
     const [startBg, setStartBg] = useState(false)
-    const {isSFXMute, sFXVolume, isBgMute, bgVolume} = settings;
-
-    // useEffect(()=>{
-    //     useSound("background", bgVolume, isBgMute)
-    // }, [bgVolume, isBgMute, startBg])
+    const {isSFXMute, sFXVolume} = settings;
 
     let winners, full, status ;
 

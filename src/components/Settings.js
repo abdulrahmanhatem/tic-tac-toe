@@ -5,8 +5,6 @@ import Switch from '@mui/material/Switch';
 
 export default function Settings({settings,setSettings}) {
   const [open, setOpen] = useState(false);
-  const [isBgMute, setIsBgMute] = useState(settings.isBgMute);
-  const [bgVolume, setBgVolume] = useState(settings.bgVolume);
   const [isSFXMute, setIsSFXMute] = useState(settings.isSFXMute);
   const [sFXVolume, setSFXVolume] = useState(settings.sFXVolume);
 
@@ -27,26 +25,6 @@ export default function Settings({settings,setSettings}) {
             </span>
           </div>
           <div className='modal-description'>
-            <div className="modal-group">
-                <div className="modal-option">
-                    <span className='option-label'>
-                        <span className='option-icon'></span>
-                        Background Music
-                    </span>
-                    <span className='option-action'>
-                    <Switch checked={!isBgMute} onChange={() => {
-                      setIsBgMute(!isBgMute)
-                      setSettings({...settings, isBgMute:!isBgMute})
-                      }}/>
-                    </span>
-                </div>
-                <div className="modal-option">
-                    <Slider size='small' value={bgVolume} onChange={e => {
-                      setBgVolume(e.target.value)
-                      setSettings({...settings, bgVolume:e.target.value})
-                      }} min={1} max={100}/>
-                </div>
-            </div>
             <div className="modal-group">
                 <div className="modal-option">
                     <span className='option-label'>
