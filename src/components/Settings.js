@@ -1,22 +1,14 @@
-import { useState, createContext } from 'react';
+import { useState } from 'react';
 import Modal from '@mui/material/Modal';
 import Slider from '@mui/material/Slider';
 import Switch from '@mui/material/Switch';
-import {Sound} from "./Sound";
 
-const SettingsContext = createContext({
-    background:{isMute:false, volume: 50}, 
-    SFX:{isMute:false, volume: 50}, 
-})
-
-export default function Settings() {
+export default function Settings({settings,setSettings}) {
   const [open, setOpen] = useState(false);
-  const [isBackgroundMute, setIsBackgroundMute] = useState(false);
-  const [backgroundVolume, setBackgroundVolume] = useState(50);
-  const [isSFXMute, setIsSFXMute] = useState(false);
-  const [sFXVolume, setSFXVolume] = useState(50);
-
-
+  const [isBgMute, setIsBgMute] = useState(settings.isBgMute);
+  const [bgVolume, setBgVolume] = useState(settings.bgVolume);
+  const [isSFXMute, setIsSFXMute] = useState(settings.isSFXMute);
+  const [sFXVolume, setSFXVolume] = useState(settings.sFXVolume);
 
   return (
     <div>
@@ -42,11 +34,17 @@ export default function Settings() {
                         Background Music
                     </span>
                     <span className='option-action'>
-                    <Switch checked={!isBackgroundMute} onChange={() => setIsBackgroundMute(!isBackgroundMute)}/>
+                    <Switch checked={!isBgMute} onChange={() => {
+                      setIsBgMute(!isBgMute)
+                      setSettings({...settings, isBgMute:!isBgMute})
+                      }}/>
                     </span>
                 </div>
                 <div className="modal-option">
-                    <Slider size='small' value={backgroundVolume} onChange={e => setBackgroundVolume(e.target.value)} min={1} max={100}/>
+                    <Slider size='small' value={bgVolume} onChange={e => {
+                      setBgVolume(e.target.value)
+                      setSettings({...settings, bgVolume:e.target.value})
+                      }} min={1} max={100}/>
                 </div>
             </div>
             <div className="modal-group">
@@ -56,11 +54,17 @@ export default function Settings() {
                         Sound Effects
                     </span>
                     <span className='option-action'>
-                    <Switch defaultChecked/>
+                    <Switch checked={!isSFXMute} onChange={() => {
+                      setIsSFXMute(!isSFXMute)
+                      setSettings({...settings, isSFXMute:!isSFXMute})
+                      }}/>
                     </span>
                 </div>
                 <div className="modal-option">
-                    <Slider size='small'/>
+                    <Slider size='small' value={sFXVolume} onChange={e => {
+                      setSFXVolume(e.target.value)
+                      setSettings({...settings, sFXVolume:e.target.value})
+                      }} min={1} max={100}/>
                 </div>
             </div>
           </div>

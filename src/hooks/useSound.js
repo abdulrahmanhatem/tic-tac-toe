@@ -1,6 +1,6 @@
 import {background, x, o, win, draw, buzz} from "../assets/sounds";
 
-export default function useSound(type, isMute) {
+export default function useSound(type, volume=50, isMute) {
     let sound;
     switch (type) {
         case "win":
@@ -22,6 +22,13 @@ export default function useSound(type, isMute) {
             break;
     }
     if (sound) {
-        new Audio(sound).play().catch(e => console.log("No Interact"))
+        if (!isMute) {
+            const audioObj = new Audio(sound);
+            if (volume) {
+                audioObj.volume = volume / 100;
+            }
+            
+            audioObj.play().catch(e => console.log("No Interact"))
+        }
     }
 }

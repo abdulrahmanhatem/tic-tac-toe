@@ -11,6 +11,12 @@ export default function Game() {
     const [currentMove, setCurrentMove] = useState(0);
 
     const [indexes, setIndexes] = useState([]);
+    const [settings, setSettings] = useState({
+      isSFXMute: false,
+      sFXVolume: 50, 
+      isBgMute: false,
+      bgVolume: 50
+    });
     const xIsNext = currentMove % 2 === 0;
     const currentSquares = history[currentMove];
 
@@ -28,18 +34,15 @@ export default function Game() {
   
     return (
       <div className="game">
-        
-       
           <div className="game-board">
-            <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} getCurrent={getCurrentSquare}/>
+            <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} getCurrent={getCurrentSquare} settings={settings}/>
           </div>
           <div className="game-info">
             <Info currentMove={currentMove} indexes={indexes} history={history} setCurrentMove={setCurrentMove}/>
           </div>
-     
-        
+
         <span className='settings'>
-          <Settings/>
+          <Settings settings = {settings} setSettings={setSettings}/>
         </span>
       </div>
     )

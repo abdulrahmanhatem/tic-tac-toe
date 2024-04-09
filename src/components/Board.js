@@ -1,15 +1,13 @@
 import Lines from './Lines';
 import calculateWinner from '../helpers/calculateWinner';
 import useSound from '../hooks/useSound';
-import {Sound} from "./Sound";
-
 
 function Square({value, onSquareClick, win}){
     return <button className={`square ${win ? "win" : ""}`} onClick={onSquareClick}>{value && <span>{value}</span>}</button>;
 }
 
-export default function Board({xIsNext, squares, onPlay, getCurrent}) {
-
+export default function Board({xIsNext, squares, onPlay, getCurrent, settings}) {
+    const {isSFXMute, sFXVolume, isBgMute, bgVolume} = settings;
 
     const winners = calculateWinner(squares);
     let status;
@@ -18,14 +16,14 @@ export default function Board({xIsNext, squares, onPlay, getCurrent}) {
     if(winners){
         const doubleWin = winners.length > 3;
         status = "Winner: " + (doubleWin ? " Double Win for " : "") + squares[winners[0]];
-        useSound("win")
+        useSound("win", sFXVolume, isSFXMute)
     }else{
         if(full){
             status = "Draw!";
-            useSound("draw")
+            useSound("draw", sFXVolume, isSFXMute)
         }else{
             status = "Next turn: " + (xIsNext ? "X" : "O");
-            useSound((xIsNext ? "x" : "o"))
+            useSound((xIsNext ? "x" : "o"), sFXVolume, isSFXMute)
         }
     }
 
@@ -35,7 +33,7 @@ export default function Board({xIsNext, squares, onPlay, getCurrent}) {
         if (squares[i] || winners){
             
             if (squares[i] ) {
-                useSound("buzz")
+                useSound("buzz", sFXVolume, isSFXMute)
                 console.log("Clicked before");
                 
             }
