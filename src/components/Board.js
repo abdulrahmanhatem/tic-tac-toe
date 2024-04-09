@@ -55,7 +55,11 @@ export default function Board({xIsNext, squares, onPlay, getCurrent, settings}) 
         full = nextSquares.every(i => i !== null);
         if(winners){
             useSound("win", sFXVolume, isSFXMute)
-            updateResult(nextSquares[i])
+            const doubleWin = winners.length > 3;
+            if (doubleWin) {
+                updateResult(nextSquares[i], "double")
+            }
+            
         }else{
             if(full){
                 useSound("draw", sFXVolume, isSFXMute)
@@ -81,9 +85,18 @@ export default function Board({xIsNext, squares, onPlay, getCurrent, settings}) 
         </div>
         <div className="status">{status}</div>
         <div className="results">
-            <span>x: {result.X ? result.X : 0}</span>
-            <span>o: {result.O? result.O : 0}</span>
-            <span>Draw: {result.draw? result.draw : 0}</span>
+            <div className='result'>
+                <span>X</span>
+                <span className='value'>{result.X ? result.X : 0}</span>
+            </div>
+            <div className='result'>
+                <span>O</span>
+                <span className='value'>{result.O? result.O : 0}</span>
+            </div>
+            <div className='result'>
+                <span>Draw</span>
+                <span className='value'>{result.draw? result.draw : 0}</span>
+            </div>
         </div>
         {winners && 
         <Confetti 

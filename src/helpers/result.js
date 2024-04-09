@@ -8,12 +8,13 @@ export function getResult() {
     }
 }
 
-export function updateResult(winner) {
+export function updateResult(winner, double=0) {
     let resultObj = localStorage.getItem("result");
     if (resultObj) {
         resultObj = JSON.parse(resultObj);   
         let count = resultObj[winner] ? resultObj[winner] : 0;
-        resultObj = {...resultObj, [winner]:++count}
+        let addition = double ? 2 : 1
+        resultObj = {...resultObj, [winner]:count + addition}
         console.log(resultObj);
         localStorage.setItem("result", JSON.stringify(resultObj))
     }else{
