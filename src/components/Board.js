@@ -9,40 +9,49 @@ function Square({value, onSquareClick, win}){
 export default function Board({xIsNext, squares, onPlay, getCurrent, settings}) {
     const {isSFXMute, sFXVolume, isBgMute, bgVolume} = settings;
 
-    const winners = calculateWinner(squares);
-    let status;
-    let full = squares.every(i => i !== null);
+    let winners, full, status ;
+
+    winners = calculateWinner(squares);
+    full = squares.every(i => i !== null);
 
     if(winners){
         const doubleWin = winners.length > 3;
         status = "Winner: " + (doubleWin ? " Double Win for " : "") + squares[winners[0]];
-        useSound("win", sFXVolume, isSFXMute)
     }else{
         if(full){
             status = "Draw!";
-            useSound("draw", sFXVolume, isSFXMute)
         }else{
             status = "Next turn: " + (xIsNext ? "X" : "O");
-            useSound((xIsNext ? "x" : "o"), sFXVolume, isSFXMute)
         }
     }
 
     function handleClick (i) {
+        
         const nextSquares = squares.slice();  
 
         if (squares[i] || winners){
             
-            if (squares[i] ) {
-                useSound("buzz", sFXVolume, isSFXMute)
-                console.log("Clicked before");
-                
-            }
+            useSound("buzz", sFXVolume, isSFXMute)
             return;
         }
 
 
         getCurrent(i)
         nextSquares[i] = xIsNext ? "X" : "O";
+        useSound((xIsNext ? "x" : "o"), sFXVolume, isSFXMute)
+
+
+        
+        winners = calculateWinner(nextSquares);
+        full = nextSquares.every(i => i !== null);
+        if(winners){
+            useSound("win", sFXVolume, isSFXMute)
+        }else{
+            if(full){
+                useSound("draw", sFXVolume, isSFXMute)
+            }
+        }
+        
         onPlay(nextSquares);
     }
 
