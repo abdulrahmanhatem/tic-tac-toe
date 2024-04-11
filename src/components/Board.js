@@ -12,8 +12,7 @@ function Square({value, onSquareClick, win}){
 export default function Board({xIsNext, squares, onPlay, getCurrent, settings}) {
     const [startBg, setStartBg] = useState(false)
     const {isSFXMute, sFXVolume} = settings;
-    const result = getResult()
-    console.log(result);
+    const result = getResult();
 
     let winners, full, status ;
 
@@ -58,6 +57,8 @@ export default function Board({xIsNext, squares, onPlay, getCurrent, settings}) 
             const doubleWin = winners.length > 3;
             if (doubleWin) {
                 updateResult(nextSquares[i], "double")
+            }else{
+                updateResult(nextSquares[i])
             }
             
         }else{
