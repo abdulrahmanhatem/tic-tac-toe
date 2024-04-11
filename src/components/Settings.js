@@ -48,9 +48,6 @@ export default function Settings({settings,setSettings}) {
           </div>
         </div>
       </Modal>
-      <div>
-        {/* <Sound type="background" isMute={isBackgroundMute} volume={backgroundVolume}/> */}
-      </div>
     </div>
   );
 }
