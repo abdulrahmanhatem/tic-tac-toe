@@ -23,6 +23,7 @@ export default function Info({currentMove, setCurrentMove, indexes, history}) {
         {row:3, col:3},
       ]
     const moves = history.map((squares, move) => {
+        
         if (move > 0) {  
             if (move > 0) {
                 start =     <button onClick={() => jumpTo(0)} className="start" title='Again'>
@@ -34,6 +35,7 @@ export default function Info({currentMove, setCurrentMove, indexes, history}) {
                             <img src={sortIcon} alt ="Sort" className={isAscending ? "" : "asc"}/>
                         </button>
             }
+            console.log(squares[indexes[move-1]]);
             let description = 
             <div className="description">
                 <span className="move">0{move}</span>  

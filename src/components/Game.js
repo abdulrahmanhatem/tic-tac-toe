@@ -27,7 +27,9 @@ export default function Game() {
   
     function getCurrentSquare(i) {
       const nextIndexes = indexes.slice();
+      console.log([...nextIndexes, i]);
       setIndexes([...nextIndexes, i]) 
+  
     }
   
     return (
