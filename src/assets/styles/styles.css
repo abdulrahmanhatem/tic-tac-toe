@@ -24,9 +24,9 @@ body {
   font-family: var(--primary-font);
   color: var(--primary-color);
 }
-#root{
+#root {
   inline-size: 100%;
-  block-size: 100%;
+  block-size: 100svh;
 }
 ul{
   list-style: none;
@@ -43,18 +43,17 @@ button{
 }
 .game {
   display: flex;
-  flex-direction: row;
   inline-size: 100%;
-  block-size: 100%;
+  block-size: 90%;
+  position: relative;
+  align-items: center;
 }
 .game-board {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  block-size: 100%;
-  gap: 2rem;
+  gap: .5rem;
 }
 .game-board .list {
   inline-size: 21rem;
@@ -193,7 +192,7 @@ svg.line:nth-of-type(4){
 }
 .status {
   margin-block-start: 2rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: var(--primary-color);
 }
 .results {
@@ -205,7 +204,7 @@ svg.line:nth-of-type(4){
   flex-direction: column;
   align-items: center;
   font-size: 1.5rem;
-  gap: 1rem;
+  gap: .5rem;
 }
 .results .result .value{
   font-weight: 900;
@@ -214,12 +213,17 @@ svg.line:nth-of-type(4){
 .confetti{
   inline-size: 100%;
 }
-.settings-icon {
-  inline-size: 2.5rem;
-  display: block;
+.settings{
   position: fixed;
   inset-block-end: 2rem;
   inset-inline-end: 2rem;
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
+}
+.settings-icon {
+  inline-size: 100%;
+  block-size: 100%;
+  display: block;
   cursor: pointer;
 }
 .settings-icon svg{
@@ -290,4 +294,28 @@ svg.line:nth-of-type(4){
 }
 .modal .modal-option .MuiSlider-root {
   color: var(--primary-color);
+}
+
+@media (max-width: 800px) {
+  #root {
+    inline-size: 100svw;
+    block-size: 100svh;
+  }
+  body {
+    block-size: auto;
+  }
+  .game {
+    flex-direction: column;
+    block-size: 100%;
+    inline-size: 100%;
+  }
+  .settings {
+    inset-inline-start: 2rem;
+    inset-inline-end: auto;
+    inset-block-start: 2rem;
+  }
+  .game-board {
+    justify-content: center;
+    flex: 1 0 100%;
+}
 }

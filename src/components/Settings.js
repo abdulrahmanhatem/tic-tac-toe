@@ -9,7 +9,7 @@ export default function Settings({settings,setSettings}) {
   const [sFXVolume, setSFXVolume] = useState(settings.sFXVolume);
 
   return (
-    <div>
+    <>
       <SettingIcon handleOpen={() => setOpen(true)}/>
       <Modal
         open={open}
@@ -48,7 +48,7 @@ export default function Settings({settings,setSettings}) {
           </div>
         </div>
       </Modal>
-    </div>
+    </>
   );
 }
 

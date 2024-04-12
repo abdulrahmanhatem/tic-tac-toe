@@ -37,9 +37,14 @@ export default function Game() {
           <div className="game-board">
             <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} getCurrent={getCurrentSquare} settings={settings}/>
           </div>
-          <div className="game-info">
-            <Info currentMove={currentMove} indexes={indexes} history={history} setCurrentMove={setCurrentMove}/>
+          {
+           
+           indexes.length > 0 &&
+            <div className="game-info">
+              <Info currentMove={currentMove} indexes={indexes} history={history} setCurrentMove={setCurrentMove}/>
           </div>
+          }
+          
 
         <span className='settings'>
           <Settings settings = {settings} setSettings={setSettings}/>
