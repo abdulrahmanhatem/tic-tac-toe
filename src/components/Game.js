@@ -46,9 +46,9 @@ export default function Game() {
           }
           
 
-        <span className='settings'>
+        {/* <span className='settings'>
           <Settings settings = {settings} setSettings={setSettings}/>
-        </span>
+        </span> */}
       </div>
     )
   }

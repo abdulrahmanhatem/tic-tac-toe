@@ -93,6 +93,7 @@ button{
   z-index: -1;
   inline-size: 100%;
   block-size: 100%;
+  overflow: hidden;
 }
 svg.line {
   position: absolute;
@@ -318,4 +319,4 @@ svg.line:nth-of-type(4){
     justify-content: center;
     flex: 1 0 100%;
 }
-}
+} 
