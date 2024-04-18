@@ -44,7 +44,7 @@ button{
 .game {
   display: flex;
   inline-size: 100%;
-  block-size: 90%;
+  block-size: 100%;
   position: relative;
   align-items: center;
 }
@@ -153,7 +153,6 @@ svg.line:nth-of-type(4){
   border-bottom: .1rem solid var(--grey);
   padding: .5rem;
   transition: all ease-in-out .3s;
-  block-size: 7svh;
 }
 .game-info .description {
   display: flex;
@@ -299,24 +298,30 @@ svg.line:nth-of-type(4){
 
 @media (max-width: 800px) {
   #root {
-    inline-size: 100svw;
-    block-size: 100svh;
+    block-size: auto;
   }
   body {
     block-size: auto;
   }
   .game {
     flex-direction: column;
-    block-size: 100%;
-    inline-size: 100%;
-  }
-  .settings {
-    inset-inline-start: 2rem;
-    inset-inline-end: auto;
-    inset-block-start: 2rem;
   }
   .game-board {
     justify-content: center;
-    flex: 1 0 100%;
+    margin-block: 2rem;
+  }
+  .modal {
+    inline-size: 75%;
+  }
+} 
+
+@media (max-width: 500px) {
+  .game-board .list {
+    inline-size: 84vw;
+    block-size: 84vw;
+  }
+  .game-board .list .square {
+    inline-size: calc(28vw - 2rem);
+    block-size: calc(28vw - 2rem);
 }
 } 
