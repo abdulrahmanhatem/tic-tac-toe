@@ -103,7 +103,7 @@ export default function Board({xIsNext, squares, onPlay, getCurrent, settings}) 
         <Confetti className="confetti"
             numberOfPieces={500} 
             colors={["#dcb288", "#444", "#000"]} 
-            tweenDuration={3000}
+            tweenDuration={10000}
             recycle={false}
             />
             }
