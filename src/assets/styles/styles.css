@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @font-face {
   font-family: "sorreda";
-  src: url(../fonts/SorredaPro.ttf) format("truetype");
+  src: url(https://raw.githubusercontent.com/abdulrahmanhatem/tic-tac-toe/main/src/assets/fonts/SorredaPro.ttf) format("truetype");
 }
 @font-face {
   font-family: "nutellaBold";
-  src: url(../fonts/nutellaBold.ttf) format("truetype");
+  src: url(https://raw.githubusercontent.com/abdulrahmanhatem/tic-tac-toe/main/src/assets/fonts/nutellaBold.ttf) format("truetype");
 }
 :root{
   --primary-font: "nutellaBold", serif;
