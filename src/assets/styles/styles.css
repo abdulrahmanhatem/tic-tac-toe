@@ -2,10 +2,12 @@
 @font-face {
   font-family: "sorreda";
   src: url(https://raw.githubusercontent.com/abdulrahmanhatem/tic-tac-toe/main/src/assets/fonts/SorredaPro.ttf) format("truetype");
+  font-display: swap;
 }
 @font-face {
   font-family: "nutellaBold";
   src: url(https://raw.githubusercontent.com/abdulrahmanhatem/tic-tac-toe/main/src/assets/fonts/nutellaBold.ttf) format("truetype");
+  font-display: swap;
 }
 :root{
   --primary-font: "nutellaBold", serif;
