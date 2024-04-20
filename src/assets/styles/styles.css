@@ -227,8 +227,8 @@ svg.line:nth-of-type(4){
   block-size: 2.5rem;
 }
 .settings-icon {
-  inline-size: 100%;
-  block-size: 100%;
+  inline-size: 2rem;
+  block-size: 2rem;
   display: block;
   cursor: pointer;
 }
