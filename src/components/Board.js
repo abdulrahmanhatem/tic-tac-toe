@@ -6,7 +6,7 @@ import Confetti from "react-confetti";
 import { updateResult, getResult } from "../helpers/result";
 
 function Square({value, onSquareClick, win}){
-    return <button className={`square ${win ? "win" : ""}`} onClick={onSquareClick}>{value && <span>{value}</span>}</button>;
+    return <span className={`square ${win ? "win" : ""}`} onClick={onSquareClick}>{value && <span>{value}</span>}</span>;
 }
 
 export default function Board({xIsNext, squares, onPlay, getCurrent, settings}) {

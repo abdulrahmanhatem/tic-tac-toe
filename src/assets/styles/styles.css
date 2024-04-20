@@ -32,7 +32,7 @@ ul{
   list-style: none;
   padding: 0;
 }
-button{
+/* button{
   color: var(--primary-color);
   background-color: transparent;
   border: none;
@@ -40,7 +40,7 @@ button{
   font-family: var(--primary-font);
   transition: .3s all ease-in-out;
   outline: none;
-}
+} */
 .game {
   display: flex;
   inline-size: 100%;
@@ -74,6 +74,7 @@ button{
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .game-board .square span{
   opacity: 0;
@@ -130,29 +131,34 @@ svg.line:nth-of-type(4){
   flex-direction: row-reverse;
   gap: 5rem;
 }
-.game-info .options button {
+.game-info .options > span {
   border: none;
   padding: .5rem;
   border-radius: .25rem;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  transition: .3s all ease-in-out;
 }
-.game-info .options button img {
+.game-info .options  > span  img {
   inline-size: 1.5rem;
   transition: all ease-in-out .3s;
 }
-.game-info .options button img.asc {
+.game-info .options  > span  img.asc {
   rotate: 0 0 1 180deg;
 }
-.game-info .options button:hover img {
+.game-info .options  > span:hover img {
   rotate: 0 0 1 360deg;
 }
 .game-info ul{
   display: flex;
   flex-direction: column;
 }
-.game-info ul button{
+.game-info ul li .step{
   border-bottom: .1rem solid var(--grey);
   padding: .5rem;
   transition: all ease-in-out .3s;
+  cursor: pointer;
+  display: flex;
 }
 .game-info .description {
   display: flex;
@@ -178,15 +184,14 @@ svg.line:nth-of-type(4){
 .game-info .description .square strong{
   font-weight: 500;
 }
-.game-info button:hover, 
-.game-info button:active, 
-.square.win, 
-.game-info .options button
+.game-info .step:hover, 
+.game-info .step:active, 
+.square.win
 {
   background: var(--primary-color);
   color: var(--black);
 }
-.game-info button.current{
+.game-info .step.current{
   background: #060606;
   color: var(--primary-color);
 }

@@ -26,14 +26,14 @@ export default function Info({currentMove, setCurrentMove, indexes, history}) {
         
         if (move > 0) {  
             if (move > 0) {
-                start =     <button onClick={() => jumpTo(0)} className="start" title='Again'>
+                start =     <span onClick={() => jumpTo(0)} className="start" title='Again'>
                                 <img src={againIcon} alt ="Again"/>
-                            </button>
+                            </span>
                 }
             if (move > 1) {
-                sort =  <button onClick={() =>setIsAscending(!isAscending)} className="sort"  title={isAscending ? "Descending" : "Ascending"}>
+                sort =  <span onClick={() =>setIsAscending(!isAscending)} className="sort"  title={isAscending ? "Descending" : "Ascending"}>
                             <img src={sortIcon} alt ="Sort" className={isAscending ? "" : "asc"}/>
-                        </button>
+                        </span>
             }
             console.log(squares[indexes[move-1]]);
             let description = 
@@ -45,7 +45,7 @@ export default function Info({currentMove, setCurrentMove, indexes, history}) {
         
             return (
                 <li key={move}>
-                <button onClick={() => jumpTo(move)} className={move === currentMove ? "current" : "" }>{description}</button>
+                    <span onClick={() => jumpTo(move)} className={"step" + (move === currentMove ? " current" : "") }>{description}</span>
                 </li>
             );
         }
