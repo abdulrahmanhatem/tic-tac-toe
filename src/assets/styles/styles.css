@@ -77,7 +77,6 @@ ul{
   cursor: pointer;
 }
 .game-board .square span{
-  opacity: 0;
   transition: all ease-in-out .5s;
   animation: animate-square .5s ease-in-out forwards;
 }
