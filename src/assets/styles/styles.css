@@ -76,7 +76,7 @@ ul{
   justify-content: center;
   cursor: pointer;
 }
-.game-board .square span{
+/* .game-board .square span{
   transition: all ease-in-out .5s;
   animation: animate-square .5s ease-in-out forwards;
 }
@@ -87,7 +87,7 @@ ul{
   100%{
     opacity: 1;
   }
-}
+} */
 .game-board .dashed {
   position: absolute;
   z-index: -1;
