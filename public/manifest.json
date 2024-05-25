@@ -8,11 +8,68 @@
     "orientation": "portrait", 
     "description": "Tic Tac Toe is a game for two players who take turns marking the spaces in a three-by-three grid with X or O. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner",
     "icons": [
-
-
+        {
+            "url": "https://abdulrahmanhatem.github.io/tic-tac-toe/icons/512.png", 
+            "sizes": "512x512", 
+            "type":"image/png", 
+            "purpose": "maskable"
+        }, 
+        {
+            "url": "https://abdulrahmanhatem.github.io/tic-tac-toe/icons/512.png", 
+            "sizes": "512x512", 
+            "type":"image/png" 
+        }, 
+        {
+            "url": "https://abdulrahmanhatem.github.io/tic-tac-toe/icons/384.png", 
+            "sizes": "384x384", 
+            "type":"image/png" 
+        }, 
+        {
+            "url": "https://abdulrahmanhatem.github.io/tic-tac-toe/icons/192.png", 
+            "sizes": "192x192", 
+            "type":"image/png" 
+        }, 
+        {
+            "url": "https://abdulrahmanhatem.github.io/tic-tac-toe/icons/152.png", 
+            "sizes": "152x152", 
+            "type":"image/png"
+        }, 
+        {
+            "url": "https://abdulrahmanhatem.github.io/tic-tac-toe/icons/144.png", 
+            "sizes": "144x144", 
+            "type":"image/png"
+        }, 
+        {
+            "url": "https://abdulrahmanhatem.github.io/tic-tac-toe/icons/128.png", 
+            "sizes": "128x128", 
+            "type":"image/png"
+        }, 
+        {
+            "url": "https://abdulrahmanhatem.github.io/tic-tac-toe/icons/96.png", 
+            "sizes": "96x96", 
+            "type":"image/png"
+        }, 
+        {
+            "url": "https://abdulrahmanhatem.github.io/tic-tac-toe/icons/72.png", 
+            "sizes": "72x72", 
+            "type":"image/png"
+        }
     ], 
     "screenshots": [
-
+        {
+            "url": "https://abdulrahmanhatem.github.io/tic-tac-toe/icons/512.png", 
+            "sizes": "512x512", 
+            "type": "image/png", 
+            "form-factor": "wide", 
+            "label": "Tic Tac Toe App"
+        },
+        {
+            "url": "https://abdulrahmanhatem.github.io/tic-tac-toe/icons/512.png", 
+            "sizes": "512x512", 
+            "type": "image/png", 
+            "form-factor": "narrow", 
+            "label": "Tic Tac Toe App"
+        }
     ]
 
 }
