@@ -6,8 +6,38 @@
   <meta name="description" content="Tic Tac Toe is a game for two players who take turns marking the spaces in a three-by-three grid with X or O. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner">
   <title>Tic Tak Toe Game</title>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    body{
+      margin: 0;
+    }
+    noscript {
+      display: flex;
+      margin: auto;
+      align-items: center;
+      justify-content: center;
+      inline-size: 100%;
+      block-size: 100svh;
+      font-size: 1.3rem;
+      background: #000;
+    }
+    noscript > div {
+      background: #111;
+      padding: 1rem;
+      border-radius: .5rem;
+      color: #bbb;
+    }
+    noscript > div strong {
+      color: #dcb288;
+      font-size: 1.4rem;
+    }
+  </style>
 </head>
 <body>
+  <noscript>
+    <div>
+      You need to <strong>enable Javascript</strong> in your browser</strong> to run the game!
+    </div>
+  </noscript>
   <div id="root"></div>
 </body>
 </html>
