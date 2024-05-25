@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import Modal from '@mui/material/Modal';
-import Slider from '@mui/material/Slider';
-import Switch from '@mui/material/Switch';
+import { useState, lazy, Suspense } from 'react';
+const Modal = lazy(() => import('@mui/material/Modal'));
+const Slider = lazy(() => import('@mui/material/Slider'));
+const Switch = lazy(() => import('@mui/material/Switch'));
 
 export default function Settings({settings,setSettings}) {
   const [open, setOpen] = useState(false);
@@ -11,6 +11,7 @@ export default function Settings({settings,setSettings}) {
   return (
     <>
       <SettingIcon handleOpen={() => setOpen(true)}/>
+      <Suspense fallback={<>Loading...</>}>
       <Modal
         open={open}
         onClose={() => setOpen(false)}
@@ -48,6 +49,9 @@ export default function Settings({settings,setSettings}) {
           </div>
         </div>
       </Modal>
+
+      </Suspense>
+      
     </>
   );
 }

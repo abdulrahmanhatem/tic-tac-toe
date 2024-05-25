@@ -35,7 +35,6 @@ export default function Info({currentMove, setCurrentMove, indexes, history}) {
                             <img src={sortIcon} alt ="Sort" className={isAscending ? "" : "asc"}/>
                         </span>
             }
-            console.log(squares[indexes[move-1]]);
             let description = 
             <div className="description">
                 <span className="move">0{move}</span>  

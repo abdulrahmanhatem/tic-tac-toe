@@ -1,8 +1,8 @@
 
-import { useState, createContext } from 'react'
-import Board from './Board'; 
-import Info from './Info';
-import Settings from './Settings';
+import { useState, createContext, lazy, Suspense } from 'react'
+const Board = lazy(() => import('./Board'))
+const Info = lazy(() => import('./Info'))
+const Settings = lazy(() => import('./Settings'))
 
 const SettingsContext = createContext()
 
@@ -27,7 +27,6 @@ export default function Game() {
   
     function getCurrentSquare(i) {
       const nextIndexes = indexes.slice();
-      console.log([...nextIndexes, i]);
       setIndexes([...nextIndexes, i]) 
   
     }
@@ -35,19 +34,24 @@ export default function Game() {
     return (
       <div className="game">
           <div className="game-board">
-            <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} getCurrent={getCurrentSquare} settings={settings}/>
+            <Suspense fallback={<></>}>
+              <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} getCurrent={getCurrentSquare} settings={settings}/>
+            </Suspense>
           </div>
           {
            
            indexes.length > 0 &&
             <div className="game-info">
-              <Info currentMove={currentMove} indexes={indexes} history={history} setCurrentMove={setCurrentMove}/>
+              <Suspense fallback={<></>}>
+                <Info currentMove={currentMove} indexes={indexes} history={history} setCurrentMove={setCurrentMove}/>
+              </Suspense>
           </div>
           }
-          
 
         <span className='settings'>
-          <Settings settings = {settings} setSettings={setSettings}/>
+          <Suspense fallback={<></>}>
+            <Settings settings = {settings} setSettings={setSettings}/>
+          </Suspense>
         </span>
       </div>
     )

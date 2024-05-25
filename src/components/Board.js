@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
-import Lines from './Lines';
+import { useState, useEffect, lazy, Suspense } from 'react'
+const Lines = lazy(() => import('./Lines'))
+const Confetti = lazy(() => import('react-confetti'))
 import calculateWinner from '../helpers/calculateWinner';
 import useSound from '../hooks/useSound';
-import Confetti from "react-confetti";
 import { updateResult, getResult } from "../helpers/result";
 
 function Square({value, onSquareClick, win}){
@@ -82,7 +82,10 @@ export default function Board({xIsNext, squares, onPlay, getCurrent, settings}) 
             
             return <Square value={squares[i]} onSquareClick={() => handleClick(i)} key={i} win={win}  getSquare={getCurrent}/>;
         })}
-        <Lines count={4}/>
+        <Suspense fallback={<></>}>
+            <Lines count={4}/>
+        </Suspense>
+        
         </div>
         <div className="status">{status}</div>
         <div className="results">
@@ -99,13 +102,16 @@ export default function Board({xIsNext, squares, onPlay, getCurrent, settings}) 
                 <span className='value'>{result.draw? result.draw : 0}</span>
             </div>
         </div>
+        
         {winners && 
-        <Confetti className="confetti"
-            numberOfPieces={500} 
-            colors={["#dcb288", "#444", "#000"]} 
-            tweenDuration={10000}
-            recycle={false}
-            />
+            <Suspense fallback={<></>}>
+                <Confetti className="confetti"
+                numberOfPieces={500} 
+                colors={["#dcb288", "#444", "#000"]} 
+                tweenDuration={10000}
+                recycle={false}
+                />
+            </Suspense>
             }
         </>
     );
